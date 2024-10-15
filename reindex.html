@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hello</h1>
+
+  <!-- event listeners -->
+
+  <button id="like"> like </button>
+  <button id="unlike"> unlike</button>
+  <button id="share"> share </button>
+
+  <script> 
+  const s1 = document.getElementById("like")
+  const s2 = document.querySelector('#unlike')
+  const s3 = document.getElementById('share')
+
+    let i = 0;
+  function countLike() {
+     console.log(i = i+1)
+  }
+  
+  s1.onclick = countLike;
+  // s1.onclick
+
+  function spread() {
+    console.log('clicked on share')
+  }
+
+  s3.addEventListener('click', countLike, false);
+  s3.removeEventListener('click', countLike, false);
+  
+
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="test1">click to see box details in console</button>
+
+  <script>
+    const selectid = document.querySelector('#test1')
+
+    let action = function(){
+      console.log(selectid.getBoundingClientRect())
+    }
+
+    selectid.addEventListener('click', action)
+    
+    
+  </script>
+</body>
+</html>

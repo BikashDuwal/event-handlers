@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ball Movement</title>
+  <style>
+    .box {
+      width: 150px;
+      height: 150px;
+      border: 5px solid black;
+      margin: 10px;
+      padding: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    #ball {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 1s;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <img src="./images/4878.png_300.png" alt="O" id="ball" width="20px" height="20px">
+  </div>
+
+  <script>
+    const getball = document.getElementById('ball');
+    const getbox = document.querySelector('.box');
+    
+    // Get box dimensions
+    let boxCoords = getbox.getBoundingClientRect();
+
+    getball.onclick = function () {
+      let ballCoords = getball.getBoundingClientRect();  // Update ball coordinates on each click
+      
+      // Ensure ball stays inside the box
+      let newLeft = Math.max(0, Math.min(boxCoords.width - ballCoords.width, ballCoords.left - boxCoords.left + 10));
+      let newTop = Math.max(0, Math.min(boxCoords.height - ballCoords.height, ballCoords.top - boxCoords.top + 10));
+
+      getball.style.left = newLeft + 'px';
+      getball.style.top = newTop + 'px';
+    };
+  </script>
+</body>
+</html>

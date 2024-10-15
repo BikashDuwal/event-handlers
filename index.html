@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+ <!-- <style>
+  .box {
+      margin: 10pt;
+      border: 10pt;
+      padding: 10pt;
+      width: 200pt;
+      height: 100pt;
+      border-color: rgb(19, 17, 17);
+      border-style: solid; 
+      background-color: rgb(185, 140, 85); }
+ </style> -->
+    
+    
+</head>
+
+<body style="background-color: rgb(56, 53, 53);" >
+
+  <h1>
+    Hello 
+  </h1>
+ <input id="comedy" type="button" value="click" onclick="alert(`haha`)">
+  <!-- // line 13 is a sort of inline events but its not a correect place to write code here -->
+    <!-- so we write a js code  -->
+
+    <button id="likes">like</button>
+    <button id="unlike">unlike</button>
+    <button  id="s3"> share </button>
+
+    <!-- event objects -->
+    <Button id="event" onclick="alert(event.type)"> what happened</buttoN>
+      some properties of event object are event.type >> such as click see readme
+
+    <!-- example1 -->
+  <!-- <script>
+    function count () {
+      for( let i = 0; i<=3; i++) {
+        alert(i)
+        console.log('triggered')
+      }
+    }
+    const forlike = document.getElementById('likes')
+    forlike.onclick = count; 
+  </script> -->
+ <!-- the 19 - 28 works  -->
+
+ <!-- example2 -->
+ <!-- <script>
+  function count(){
+    for(let x=0; x<=3; x++) {
+      console.log(x)
+    }
+    }
+
+    const forUnlike = document.getElementById('unlike')
+    // forUnlike.onclick(count) doesnot work
+    // forUnlike.onclick(count) //automatically logs 0123 so errorneous
+
+ </script> -->
+ <!-- 32 to 43 doesnot work cannot call onclick method
+  ps also if you assign two action for same button then later will override 1st one -->
+  
+  <!-- example3 addEventListener takes 3 params 1st event 2nd function(handler), 3rd options bubble or capture -->
+  <script>
+    const spread = document.getElementById('s3');
+
+    function share(){
+      alert('share??')
+    }
+    
+    spread.addEventListener('click', share); // using eventhandlers 
+    // removal requires same function and make sureto use same function as handlers do not pass direct funciton instead call the function
+
+    // spread.addEventListener('click',  ()=>{alert('hello')})
+    // spread.removeEventListener('click', ()=>{alert('hello')})
+    // line 61 and 62 does not work even same function is used why?? 
+
+    spread.removeEventListener('click', share) // 58 hamdler removed works
+    // Please note – if we don’t store the function in a variable, then we can’t remove it. There’s no way to “read back” handlers assigned by addEventListener
+  </script>
+
+<!-- Multiple calls to addEventListener allow it to add multiple handlers, like this: -->
+
+<input id="elem" type="button" value="Click me"/> 
+
+<!-- <script>
+  function handler1() {
+    alert('Thanks!');
+  };
+
+  function handler2() {
+    alert('Thanks again!');
+  }
+
+  elem.onclick = () => alert("Hello"); //using DOM property
+  elem.addEventListener("click", handler1); // Thanks! using handlers
+  elem.addEventListener("click", handler2); // Thanks again! usign handlers
+
+// EVENT OBJECT
+
+
+</script> -->
+
+<input type="button" value="click me" id="elem2">
+<!-- <script>
+  elem2.onclick = function(event) {
+    alert(event.type + "at" + event.currentTarget);
+    alert('coordinates:' + event.clientX + ":" + event.clientY);
+  }
+
+</script> -->
+
+  <!-- we can also assign oj as event handler using addEventListener. When an event occurs its handleEvent method is called -->
+
+  <button id="elem12">use me</button>
+
+<!-- <script>
+  let obj = {
+    handleEvent(event) {
+      alert(event.type + " at " + event.currentTarget);
+    }
+  };
+
+  elem12.addEventListener('click', obj);
+</script> -->
+
+<!-- example4 -->
+ <div onclick="this.hidden = true">
+  <button id="text" > delete </button>
+</div> 
+ <!-- example4 works but exampe 5 does not works -->
+
+ <!-- <div>
+  <button id="sth" onclick="this.hidden = true">apple</button>
+  <p id="para">bye</p>
+ </div>
+  -->
+
+<!-- <script>
+  document.getElementById("sth")
+</script> -->
+
+<script>
+  
+  document.getElementById('text').onclick = function(){
+    // document.getElementById('jpt').hidden = true; // using html syntax
+    // let x = document.getElementById('jpt');
+    // let y = document.getElementById('text')
+  //   if(x.style.display === 'none') {
+  //     x.style.display = 'block' ;
+  //   } else {
+  //     x.style.display = 'none' // using css syntax
+  //   }
+
+  //   if(x.style.visibility === 'hidden') {
+  //     x.style.visibility = 'visible'
+  //   } else {
+  //     x.style.visibility = 'hidden';    }
+  // }
+
+  // x.innerHTML = 'unhide'
+
+  // x.classList.toggle('highlight')
+    // x.hidden = true
+    // y.hidden = true
+
+
+  }
+
+</script>
+
+<!-- example5 -->
+ <button id="ex5"></button>
+
+ <!-- <script>
+  let x5script = document.getElementById('ex5')
+
+  x5script.addEventListener('click', ()=>{ alert('1')});
+  x5script.removeEventListener('click', () => { alert('1')});
+  x5script.onclick =  () => alert(2)
+ </script> -->
+
+ <style>
+  .box {
+    width: 150px;
+    height: 150px;
+    border : 5px;
+    margin: 10px;
+    padding: 10px;
+    border-style: solid; /*borderstyle is msut for making border visible*/
+    border-color: rgb(0, 0, 0);
+    position: relative;
+    overflow: hidden;
+  }
+  #ball{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition:all 1s;
+  }
+  .xbox{
+    border: 20px;
+    width: 20px;
+    height: 20px;
+    color: rgb(235, 229, 229);
+
+  }
+  #first{
+    border: 2px;
+    height: 200px;
+    width: 800px;
+    border-style: dotted;
+    border-width: 10px;
+    border-color: rgb(20, 116, 52);
+    overflow: scroll;
+    position:relative;
+  }
+  #second {
+    border: 2px;
+    height: 200px;
+    width: 800px;
+    border-style: dashed;
+    border-width: 10px;
+    border-color: rgb(47, 80, 80);
+    overflow: scroll;
+  }
+  #third {
+    border: 2px;
+    height: 200px;
+    width: 800px;
+    border-style: solid;
+    border-width: 10px;
+    overflow: scroll;
+    border-color: aqua;
+  }
+  #xxx{
+    float: right;
+  }
+
+  </style>
+  
+   <div class="box" >
+    <img src="./images/4878.png_300.png" alt="O" id="ball" width="10px" >
+  </div>
+
+  <!-- <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque doloremque unde vero voluptatibus sit consequatur similique odio id consequuntur necessitatibus eum eveniet a alias explicabo nobis tempore ab, eius incidunt illum. Laudantium libero sapiente saepe tempora repellat obcaecati quisquam perspiciatis quam nesciunt minima beatae ut possimus, doloremque nihil maiores ad dolores incidunt tempore laborum tenetur sequi aperiam nulla. Rem fugit natus quidem excepturi. Unde alias mollitia, nemo repellat veritatis fuga. Mollitia minus tenetur reiciendis. Molestiae officia ab unde vitae nulla molestias tempora in distinctio voluptatem dolor ratione, nostrum nihil explicabo eveniet culpa architecto accusamus sed repudiandae consectetur dignissimos incidunt, temporibus blanditiis. Ipsum officiis cum vel maxime. Et, nihil quos? Veniam nostrum suscipit eveniet minus, temporibus consectetur quo nesciunt, eligendi ratione corrupti obcaecati ullam, iure a delectus repellendus voluptas necessitatibus deserunt autem earum ducimus deleniti labore optio animi voluptatem? Velit officia perspiciatis tempora illo veritatis quis minima deserunt sunt maiores ipsa, eius ex odio suscipit unde cumque autem qui consectetur numquam at hic voluptatum? Modi culpa ipsam reiciendis saepe enim impedit sed minima voluptates! Quo voluptatem id nostrum quidem quia ab veniam modi pariatur eius placeat perferendis et numquam, ullam nisi, libero necessitatibus iste hic ipsa distinctio aliquam voluptatibus aperiam. Neque aperiam possimus, incidunt assumenda nam molestias tempora sunt minus fuga et ipsam magnam, iusto placeat delectus, praesentium tempore corrupti distinctio! Reiciendis eveniet fugit consectetur odit nisi, corporis officia dignissimos mollitia possimus, odio aperiam recusandae veritatis consequatur molestias rem sed illum assumenda minus praesentium quisquam qui, voluptatum placeat? Deserunt quo, nostrum est facere rerum ut inventore quidem debitis dolor, suscipit impedit dignissimos possimus optio, necessitatibus doloribus harum. Labore ex commodi excepturi mollitia deserunt alias quae suscipit deleniti cumque aspernatur odio voluptatem debitis, obcaecati praesentium ea facere in repudiandae. Dignissimos aliquid minus a! Suscipit sit sunt accusantium fugit alias modi harum mollitia iste, rem voluptatibus quibusdam natus, odio molestias ipsam a non. Eum deleniti dolorem explicabo placeat distinctio nam fugiat suscipit quis architecto nulla magnam incidunt earum error aspernatur iusto expedita, necessitatibus facere laborum at, rem minima tempore ab. Quas repudiandae ut molestias repellendus eius reiciendis. Voluptatum labore explicabo odio voluptas fugit placeat ipsum quaerat illo maiores iure quasi nam sequi earum non exercitationem quod enim ea, et totam fugiat. Minima id perspiciatis quos soluta, blanditiis sequi! Aut, dignissimos excepturi. Blanditiis officiis consequuntur ducimus soluta natus illum ipsam, magnam veniam inventore dolores maiores deserunt reprehenderit quis unde aspernatur nobis eaque distinctio odit nemo at, labore omnis nulla? Similique consequuntur totam repellendus blanditiis accusamus quisquam? Ipsam at nulla assumenda illo beatae laborum cum explicabo quibusdam vel veniam, quam nesciunt blanditiis excepturi quas aspernatur, officia velit repudiandae ea ad ducimus consectetur rem perferendis debitis illum? Optio, voluptas adipisci nostrum magnam saepe voluptatum facilis sequi asperiores corrupti, voluptates praesentium voluptate eius tempora. Ducimus inventore tempora quis ex reiciendis porro excepturi autem. Quas cupiditate, odio quam quaerat suscipit magni dicta omnis iste provident officia soluta eaque illo temporibus repudiandae a deserunt minus facere perspiciatis debitis. Cumque, nostrum. Id ad alias explicabo quibusdam dolores aperiam sed? Expedita iure magni quae, sequi in similique mollitia fuga pariatur? Fuga sit officia aliquid et asperiores vero cupiditate quam suscipit nihil, magni reiciendis, odio in saepe, doloremque consectetur numquam excepturi eum deserunt laboriosam nisi consequatur quidem nulla. Id, quae dolore inventore veniam doloribus odio illum labore? Iste illum minima totam animi repellat, voluptatum nam consectetur, aliquid molestias rerum nulla exercitationem nostrum tenetur ratione distinctio ipsa itaque illo? Sed odit deleniti itaque molestias consectetur, hic sunt at, incidunt minima recusandae cumque earum quod beatae maiores, perspiciatis modi eaque ratione saepe unde aspernatur! Laboriosam, unde architecto. Non, distinctio culpa ab aut magnam doloremque amet obcaecati beatae voluptatem expedita aspernatur id modi. Asperiores odio perferendis eveniet ea cum iure nam assumenda deserunt illo vero libero maxime suscipit laudantium id molestiae totam quo facere obcaecati nisi expedita, optio ad exercitationem architecto? Voluptate quasi voluptatem dolorem, magni dolore adipisci autem. Nostrum voluptas suscipit consequuntur totam dolor magnam ex rem dignissimos atque iure perferendis, non similique laborum tempore adipisci amet eius corporis. Sapiente accusamus, molestiae aspernatur ipsa facilis eligendi eos similique sit fugit, impedit ad non libero nulla debitis iste! Ipsum ullam eligendi tempora dolorem iste placeat saepe? Sit non doloremque nihil hic exercitationem dicta animi corporis amet architecto asperiores, doloribus illo, rerum ad repellendus atque quaerat autem delectus neque aliquid facilis? Fugit iure nostrum laborum sapiente corporis placeat dolorum quisquam ipsa! Nemo non minima praesentium blanditiis eum sed, eos error dicta voluptas iusto assumenda eius corrupti. Aliquam, perspiciatis. Officiis quia enim non exercitationem facere accusamus aperiam nihil voluptatum, nam tempora dicta. Aut ducimus saepe autem tempora architecto debitis molestiae officia quasi amet inventore! Dolores laborum architecto aspernatur reprehenderit ratione quis, recusandae autem corrupti velit? Atque neque ipsa, error officiis ea perspiciatis ab corrupti reiciendis quas consectetur quam suscipit tempore obcaecati quod modi deleniti hic incidunt, labore iusto, voluptatibus excepturi veritatis numquam dignissimos. Doloribus, facilis harum voluptate perspiciatis officia deleniti. Quod assumenda non aperiam voluptates odit enim, facilis ipsam commodi adipisci. Soluta quasi corrupti ex, aliquam eligendi laboriosam! Accusantium tempora sit cupiditate officia quia aut nostrum deleniti? Consectetur minus nihil quibusdam, laudantium, sapiente provident quia fuga vero, aut voluptate magnam deserunt asperiores deleniti id enim nisi modi accusantium itaque. Repellat fugiat, quibusdam nihil quasi dicta id, reiciendis totam, impedit magni perspiciatis nemo. Neque impedit dolores nemo deleniti iste adipisci dolorum quo, eligendi temporibus deserunt animi ut qui ipsam quasi enim sequi at. Ratione molestiae repudiandae quisquam, nihil eligendi doloremque animi similique dignissimos aliquid corporis natus libero aperiam suscipit voluptates aut, ea amet? Illum enim unde voluptatibus optio architecto rem, qui sit, quia ad, nostrum quis! Dignissimos inventore officia natus sed consequuntur debitis saepe blanditiis! Voluptate assumenda quisquam eius, rerum doloremque rem nam fugiat sint optio reiciendis vero fugit, nemo velit natus nesciunt ex quas possimus consectetur! Quidem veritatis autem quae odit, deleniti, debitis iste temporibus magni exercitationem et tenetur repudiandae ex amet optio maxime dolor! Doloribus obcaecati tenetur eaque reprehenderit eligendi quidem itaque quaerat! Repudiandae, ex eaque!
+  </h1> -->
+   <button id="xxx">close</button>
+
+  <h1 id="first" > 
+  <div class="xbox">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, laudantium?
+  </h1>
+
+
+  <h2 id="second">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, itaque!.3
+  </h1>
+
+  <h3 id="third">
+  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, numquam!</h1>
+</div>
+
+
+
+  <script>
+    const selectall = document.querySelector('#first')
+    // console.log(selectall)
+
+    const butTon = document.createElement('button')
+    butTon.textContent = "dismiss"
+    
+   
+    selectall.appendChild(butTon)
+
+
+    const getHeading = document.querySelectorAll('h1, h2, h3')
+    console.log(getHeading)
+
+
+
+
+
+    let assignX = document.getElementById('xxx');
+
+    const x = document.querySelector('.xbox').firstElementChild
+    const abs = document.getElementById('xxx')
+    abs.addEventListener('click', () => {x.remove()})
+
+    // console.log(x)
+    
+    
+  </script>
+</body>
+
+</html>
