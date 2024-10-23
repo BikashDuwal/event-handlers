@@ -231,6 +231,7 @@
     border-width: 10px;
     border-color: rgb(47, 80, 80);
     overflow: scroll;
+    position:relative;
   }
   #third {
     border: 2px;
@@ -240,6 +241,7 @@
     border-width: 10px;
     overflow: scroll;
     border-color: aqua;
+    position:relative;
   }
   #xxx{
     float: right;
@@ -256,48 +258,71 @@
    <button id="xxx">close</button>
 
   <h1 id="first" > 
-  <div class="xbox">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, laudantium?
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, laudantium?xzdxxxxxxxxxxxxxxxvvvvvvvdaaaaaaa
   </h1>
 
-
   <h2 id="second">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, itaque!.3
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, itaque!.3sdgfdsfadfadfxxxxxxxxxxxxxxxxxx
   </h1>
 
   <h3 id="third">
-  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, numquam!</h1>
+  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam, numquasdfsdadddddddddddddggggggggggggdcxxxxm!</h1>
 </div>
 
 
+  <menu id="menu"> Sweets
+    <ul>
+      <li>Cake</li>
+      <li>Donot</li>
+      <li>Honey</li>
+    </ul>
+  </menu>
 
   <script>
-    const selectall = document.querySelector('#first')
-    // console.log(selectall)
+    // const selectall = document.querySelector('#first')
+    // // console.log(selectall)
 
-    const butTon = document.createElement('button')
-    butTon.textContent = "dismiss"
+    // const butTon = document.createElement('button')
+    // butTon.textContent = "dismiss"
     
    
-    selectall.appendChild(butTon)
+    // selectall.appendChild(butTon)
 
 
-    const getHeading = document.querySelectorAll('h1, h2, h3')
-    console.log(getHeading)
+    // const getHeading = document.querySelectorAll('h1, h2, h3')
+    // console.log(getHeading)
 
 
+    // let assignX = document.getElementById('xxx');
+
+    // const x = document.querySelector('.xbox').firstElementChild
+    // const abs = document.getElementById('xxx')
+    // abs.addEventListener('click', () => {x.remove()})
 
 
-
-    let assignX = document.getElementById('xxx');
-
-    const x = document.querySelector('.xbox').firstElementChild
-    const abs = document.getElementById('xxx')
-    abs.addEventListener('click', () => {x.remove()})
 
     // console.log(x)
     
-    
+    const selectAllHeading = document.querySelectorAll('h1, h2, h3')
+
+    selectAllHeading.forEach( division => {
+
+      const createXbutton = document.createElement('button')
+      createXbutton.textContent = 'close'
+      createXbutton.style.position = 'absolute';
+      createXbutton.style.top = '0';
+      createXbutton.style.right = '0';
+
+      division.appendChild(createXbutton)
+
+      createXbutton.onclick = function(){
+        division.hidden = true;
+      }
+      
+    });
+
+
+
   </script>
 </body>
 
